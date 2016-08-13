@@ -1,0 +1,72 @@
+normalize-css()
+
+bleu = #2196f3
+
+nav .nav-wrapper 
+	background-color bleu
+
+nav .brand-logo 
+	font-size 1rem
+
+footer.page-footer
+	background-color bleu
+
+.card .card-image .card-title
+	position	absolute
+	left	30%
+
+
+#likesArticle-lg #likesArticle:hover 
+	display	none
+
+#likesArticle-lg:hover 
+	display	inline
+
+.img_size
+	opacity	0.5
+	width	80px
+	height	300px
+
+.vignette_size
+	width	100px
+	height	100px
+
+.bkg_img
+	opacity	0.3
+	width	20%
+	max-height	100%
+
+.login-modal {
+    z-index: -1;
+    position: fixed;
+    border: solid 4px bleu;
+    top: 20%;
+    left: 50%;
+    padding: 20px;
+    width: 50%;
+    transform: translate3d(25%, -80%, 0) scale(0.5);
+    background: #FFF;
+    opacity: 0;
+    &.open {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        z-index: 3;
+    }
+    h3 {
+        margin-top: 0;
+    }
+    .close-login {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        cursor: pointer;
+        font-size: 2em;
+        padding: 10px 15px;
+        opacity: 0.2;
+    }
+}
+
+.at-input {
+    margin-bottom: 10px;
+}

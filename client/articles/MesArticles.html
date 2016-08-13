@@ -1,0 +1,24 @@
+<template name="MesArticles">
+	<div class="title"></div> 
+	<table class="highlight">
+        <thead>
+          <tr>
+              <th data-field="Articles">Articles</th>
+              <th data-field="Publié">Publié</th>
+              <th data-field="Actions">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+	        {{#each mesArticles}}
+		    	{{> MesArticlesItem}}
+	        {{/each}}
+        </tbody>
+      </table>
+  <div class="center">
+  	<a id="nouvelArticle" class="btn-floating btn-large waves-effect waves-light red">
+  		<i class="material-icons">add</i>
+  	</a>
+    <p>Nouvel article</p>
+  </div>
+</template>

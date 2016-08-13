@@ -1,0 +1,22 @@
+<template name="CommentItem">
+	<div class="col s12 m12 l12">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="{{ commentateurAvatar userId }}" alt="" class="circle responsive-img vignette_size">
+            </div>
+            <div class="col s10">
+            	<div class="left">
+	            	<h5>{{author}}</h5>
+	             	 {{body}}
+             	</div>
+              	<div class="right">
+        			{{HeureDate createdAt}} <br>
+        			<i class="fa fa-heart {{ liked _id }}" data-id="{{_id}}" aria-hidden="true"></i> 
+  					<span class="black-text">{{nbLikes}} j'aime</span>
+        		</div>
+            </div>
+          </div>
+        </div>
+      </div>
+</template>

@@ -1,0 +1,15 @@
+<template name="Articles">
+	<div class="row">
+	 {{#if Template.subscriptionsReady}}
+		{{#each articles}}
+			{{>ArticleItem }}
+		{{/each}}
+	{{else}}
+		<p>Chargement ...</p>
+		<div class="progress">
+      		<div class="indeterminate"></div>
+  		</div>
+	{{/if}}
+	</div>
+	<button>TOUS LES ARTICLES</button>
+</template>

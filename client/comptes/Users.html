@@ -1,0 +1,35 @@
+<template name="Users">
+	{{#if isInRole 'admin'}}
+		<h1>Liste des comptes</h1>
+		<table class="{{editMode}}">
+		<tr>
+			<th>Id</th>
+			<th>Email</th>
+			<th>Nom</th>
+			<th>Crée le</th>
+			<th>Admin</th>
+		</tr>
+		{{#each users}}
+			<tr>
+				<td class="user_id">{{_id}}</td>
+				<td>{{userEmail}}</td>
+				<td>{{profile.nom}}</td>
+				<td>{{dateCreation}}</td>
+				<td>{{isAdmin}}
+				   {{#if currentEdit}}
+					<div class="user-edit">
+						<i class="fa fa-close close-edit-mode"></i>
+						<h4>Edit User</h4>
+						{{#if isAdmin}}
+						<button class="toggle-admin">Remove Admin</button>
+						{{else}}
+						<button class="toggle-admin">Make Admin</button>
+						{{/if}}
+					</div>
+					{{/if}}
+				</td>
+			</tr>
+		{{/each}}
+		</table>
+	{{/if}}
+</template>

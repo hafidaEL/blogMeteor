@@ -1,0 +1,16 @@
+<template name="ArticleItem">
+ 	<div class="col s12 m6 l4">
+      <div class="card hoverable">
+        <div class="card-image">
+          <a href="/article/{{_id}}"><img class="img_size" src="{{vignette imageId}}"></a>
+          <span class="card-title black-text">{{title}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{extrait content}}...</p>
+        </div>
+        <div class="card-action">
+          <a href="/article/{{_id}}">Lire la suite</a>
+        </div>
+      </div>
+    </div>
+</template>

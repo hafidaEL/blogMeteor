@@ -1,0 +1,12 @@
+<template name="Dropdown">
+		<ul id="monDropDown" class="dropdown-content">
+		{{#if isInRole 'admin'}}
+   			  <li><a id="mesArticles">Mes articles</a></li>
+   			  <li><a id="users">Utilisateurs</a></li>
+  		{{/if}}	
+		  <li><a href="/profil">Profil</a></li>	
+		  <li><a id="commentaires">Commentaires</a></li>  	
+			  <li class="divider"></li>
+			  <li><a href="#" id="boutonLogout">Déconnexion</a></li> 
+		</ul>
+</template>
