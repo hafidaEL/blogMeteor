@@ -3,8 +3,8 @@ Template.adminCommentaire.onCreated(function(){
 		// id commentaire courant : Template.currentData()._id 
 		if (Session.get('commentsMode') == 'received')
 		{
-			console.log("subscribe aux likes de "+Template.currentData()._id);
-			this.subscribe('likersComment', Template.currentData()._id);
+			//console.log("subscribe aux likes de "+Template.currentData()._id);
+			//this.subscribe('likersComment', Template.currentData()._id);
 		} 
 
 	});
@@ -21,18 +21,18 @@ Template.adminCommentaire.helpers({
 			return art.title;
 	},
 	owner : (userId) => {
-		console.log("userId du commentaire : " + userId);
+		//console.log("userId du commentaire : " + userId);
 		return Meteor.userId() === userId;
 	},
 
 	likers : () => {
-		if (Session.get('commentsMode') == 'received'){
-			var likersIds = _.pluck(Likes.find().fetch(),'userId');
-			console.log("likersIds "+likersIds);
-			u =  Meteor.users.find({_id: {$in : likersIds }});
-			console.log( likersIds.length + " likes trouvés. users qui ont likés " + u.count());
-			return u;
-		} 
+		// if (Session.get('commentsMode') == 'received'){
+		// 	var likersIds = _.pluck(Likes.find().fetch(),'userId');
+		// 	console.log("likersIds "+likersIds);
+		// 	u =  Meteor.users.find({_id: {$in : likersIds }});
+		// 	console.log( likersIds.length + " likes trouvés. users qui ont likés " + u.count());
+		// 	return u;
+		// } 
 
 		
 	}

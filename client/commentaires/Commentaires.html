@@ -3,9 +3,9 @@
 	<div class="col s3">
 		<div class="collection">
 		    <a href="#" id="all" class="collection-item {{ isActif "all" }}">Tout<span class="badge">{{nbCommentaires}}</span></a>
-		    <a href="#" id="my" class="collection-item {{ isActif "my" }}">Postés<span class="new badge">4</span></a>
-		    <a href="#" id="received" class="collection-item {{ isActif "received" }}">J'aime reçus<span class="new badge red">1</span></a>
-		    <a href="#" id="sent" class="collection-item {{ isActif "sent" }}">J'aime postés<span class="badge">14</span></a>
+		    <a href="#" id="my" class="collection-item {{ isActif "my" }}">Postés<span class="badge">{{nbMesCommentaires}}</span></a>
+		    <a href="#" id="received" class="collection-item {{ isActif "received" }}">J'aime reçus<span class="badge red"></span></a>
+		    <a href="#" id="sent" class="collection-item {{ isActif "sent" }}">J'aime postés<span class="badge"></span></a>
 	 	</div>
 	</div>
 {{#if Template.subscriptionsReady}}
@@ -15,17 +15,7 @@
 		{{/each}}
 	</div>
 {{else}}
-	 <div class="preloader-wrapper big active">
-    <div class="spinner-layer spinner-blue-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-  </div>
+	 {{> monLoader}}
 {{/if}}
 
 </div>

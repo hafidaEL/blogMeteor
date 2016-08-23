@@ -42,7 +42,12 @@ Meteor.publish('mesCommentaires', function(){
 // un commentaire donné
 Meteor.publish('SingleComment', function(id){
 	check(id,String);
-	return Comments.find({_id: id});
+
+	comment = Comments.findOne({_id: id});
+	console.log("comment.articleId : " + comment.articleId);
+	a = Articles.find({ _id : comment.articleId }) ;
+	console.log("article.count : " + a.count());
+	return [Comments.find({_id: id}), Articles.find({ _id : comment.articleId })];
 });
 
 // Mes commentaires qui ont été liké
@@ -103,17 +108,17 @@ Meteor.publish('likesByTyp', function(typ) {
 });
 
 // la liste des utilisateurs qui ont liké un commentaire donné
-Meteor.publish('likersComment', function(commentId) {
-	check(commentId,String);
-	l = Likes.find({typ: 'commentaire', ReceiverId:commentId }, {fields: { userId:true }}) ;
-	console.log("publication de "+l.count() + " likes pour le comment "+commentId);
-	return l;
-});
+// Meteor.publish('likersComment', function(commentId) {
+// 	check(commentId,String);
+// 	l = Likes.find({typ: 'commentaire', ReceiverId:commentId }, {fields: { userId:true }}) ;
+// 	console.log("publication de "+l.count() + " likes pour le comment "+commentId);
+// 	return l;
+// });
 
-Meteor.publish('lesCommentairesQueJaiLikes', function() {
-	var commentIds = _.pluck(Likes.find({ typ: 'commentaire', userId : this.userId },{fields: { ReceiverId:true }}).fetch(),'ReceiverId');
-	console.log(" commentIds : "+ commentIds);
-	return Comments.find({ _id : {$in : commentIds }}) ; 
+// Meteor.publish('lesCommentairesQueJaiLikes', function() {
+// 	var commentIds = _.pluck(Likes.find({ typ: 'commentaire', userId : this.userId },{fields: { ReceiverId:true }}).fetch(),'ReceiverId');
+// 	console.log(" commentIds : "+ commentIds);
+// 	return Comments.find({ _id : {$in : commentIds }}) ; 
 
-});
+// });
 

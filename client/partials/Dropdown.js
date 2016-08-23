@@ -1,3 +1,9 @@
+Template.Dropdown.onCreated(function(){
+	this.autorun( () => {
+		this.subscribe('SingleUser');
+	});
+
+});
 
 Template.Dropdown.onRendered(function(){    
   console.log(' onRenderedDropdown ');
@@ -5,4 +11,13 @@ Template.Dropdown.onRendered(function(){
   $(".select-dropdown").material_select();
   $(".button-collapse").sideNav();
 
+});
+
+Template.Dropdown.helpers({
+	user : () => {
+		return Meteor.users.findOne({});
+	},
+	email : ()=> {
+		return Meteor.users.findOne().emails[0].address;
+	}
 });

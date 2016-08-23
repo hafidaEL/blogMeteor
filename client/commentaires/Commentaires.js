@@ -8,7 +8,8 @@ Template.Commentaires.onCreated(function(){
 			this.subscribe('comments');
 		}
 		else if (commentsMode == 'my') {
-			this.subscribe('mesCommentaires');
+			this.subscribe('comments');
+			// this.subscribe('mesCommentaires');
 		}
 		else if (commentsMode == 'received') {
 			//this.subscribe('mesCommentairesLiked');
@@ -16,7 +17,7 @@ Template.Commentaires.onCreated(function(){
 		}
 		else if (commentsMode == 'sent'){
 			// this.subscribe('mesLikes');
-			this.subscribe('lesCommentairesQueJaiLikes');
+			// this.subscribe('lesCommentairesQueJaiLikes');
 		}
 
 		
@@ -28,10 +29,16 @@ Template.Commentaires.onCreated(function(){
 
 Template.Commentaires.helpers({
 	commentaires : () => {
+		if (Session.get('commentsMode') == 'my') {
+			return Comments.find({ userId : Meteor.userId() }, {sort: {createdAt: -1 }});
+		}
 		return Comments.find({}, {sort: {createdAt: -1 }});
 	},
 	nbCommentaires : () => {
 		return Comments.find().count();
+	},
+	nbMesCommentaires : () => {
+		return Comments.find({ userId : Meteor.userId() }).count();
 	},
 	isActif : (id) => {
 		//console.log("id ="+ id);

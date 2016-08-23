@@ -1,12 +1,21 @@
 <template name="Dropdown">
 		<ul id="monDropDown" class="dropdown-content">
+		{{#if Template.subscriptionsReady}}
+			<li>
+			    <div class="userView">
+			      <a><span class="black-text name">{{user.profile.nom}} {{user.profile.prenom}}</span></a>
+			      <a><span class="black-text email">{{email}}</span></a>
+			    </div>
+		    </li>
+		{{/if}}
+	    <li class="divider"></li>
 		{{#if isInRole 'admin'}}
    			  <li><a id="mesArticles">Mes articles</a></li>
    			  <li><a id="users">Utilisateurs</a></li>
   		{{/if}}	
-		  <li><a href="/profil">Profil</a></li>	
+		  <li><a id="profil">Profil</a></li>	
 		  <li><a id="commentaires">Commentaires</a></li>  	
 			  <li class="divider"></li>
-			  <li><a href="#" id="boutonLogout">Déconnexion</a></li> 
+			  <li><a href="#" class="boutonLogout">Déconnexion</a></li> 
 		</ul>
 </template>
