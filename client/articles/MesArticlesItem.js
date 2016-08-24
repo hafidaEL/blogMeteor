@@ -9,9 +9,7 @@ Template.MesArticlesItem.events({
 		Meteor.call('deleteArticle', id);
 	},
 	'click .inputPublish' : (e) => {
-
   		id = $(e.currentTarget).attr('data-id');
-  		console.log("je change isPublished "+id);
 		Meteor.call('togglePublishArticle', id);
 	}
 });

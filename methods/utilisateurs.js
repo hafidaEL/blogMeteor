@@ -4,11 +4,14 @@
 Meteor.methods({
 	toggleAdmin : function(id) {  // pour passer un utilisateur en admin ou l'inverse
 		check(id, String);
+		console.log(" toggleAdmin "+id);
 		if (Roles.userIsInRole(id, 'admin')) {
+			console.log("suppression role admin pour "+id);
 			Roles.removeUsersFromRoles(id, 'admin');
 		}
 		else {
 			Roles.addUsersToRoles(id, 'admin');
+			console.log("ajout role admin pour "+id);
 		}
 	},
 	updateProfil : function(obj) {

@@ -2,45 +2,32 @@ Template.Users.onCreated(function(){
 	this.autorun( () => {
 		this.subscribe('allUsers');
 	});
-
 });
 
 Template.Users.helpers({
+	notMe : function() {
+		return ! (this._id == Meteor.userId() );
+	},
 	users : () => {
-		return Meteor.users.find();
+		return Meteor.users.find({});
 	},
-	userEmail: function() {
-		return this.emails[0].address;
+	userEmail : function(){
+    return this.emails[0].address;
+  	},
+	isAdmin : function () { 
+		var id = this._id;
+		console.log(">> id : "+id);
+		return Roles.userIsInRole(id, 'admin') ? "checked" : "";
 	},
-	isAdmin : function() {
-		// si on avait mis Roles.userIsInRole(this.userId, 'admin') ça aurait mis true tout le temps (car admin)
-		return Roles.userIsInRole(this._id, 'admin') ? 'admin' : '' ;
-	},
-	dateCreation: function () {
-    	return moment(this.createdAt).format('DD/MM/YYYY HH:mm'); 
-    },
-    editMode : function() {
-    	// classe pour tout le tableau
-    	return Session.get('currentUser') ? 'edit-mode' : '';
-    },
-    currentEdit: function() {   
-    	// celui qu'on est en train d'éditer 
-    	let user = Session.get('currentUser') ;
-    	return user._id === this._id; 
-    },
-    userId : function() {
-    	return Meteor.userId() ; 
+	dateCreation: (createdAt) => {
+    	return moment(createdAt).format('DD/MM/YYYY HH:mm'); 
     }
 });
 
 Template.Users.events({
-	'click .user_id' : function() {
-		Session.set('currentUser',this);
-	},
-	'click .toggle-admin' : function(){
-		Meteor.call('toggleAdmin', this._id);
-	},
-	'click .close-edit-mode' : function() {
-		Session.set('currentUser',null);
+	'click .toggleAdmin' : function(e){
+		var id = $(e.currentTarget).attr('data-id');
+		console.log("click sur toggle admin "+id);
+		Meteor.call('toggleAdmin', id);
 	}
 })
