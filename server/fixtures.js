@@ -22,11 +22,13 @@
      author: billy.profile.name,
      publishedAt: new Date(now - 7 * 3600 * 1000),
      nbComments: 2,
-     nbLikes: 5,
+     nbLikes: 0,
      isPublished: true,
      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
      createdAt: new Date(now - 10 * 3600 * 1000),
-     image: '/nenuphar.jpg'
+     image: '/nenuphar.jpg',
+     likers : [],
+     imageId : 'dKNRik4vwWrmvTeRF'
    }); */
    var artId = "LepFFHFaXxBfNNRR8";
 

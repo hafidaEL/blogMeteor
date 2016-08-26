@@ -1,8 +1,12 @@
 // Les publications
 
-Meteor.publish('articles', function(){
-	return Articles.find({isPublished : true});
-	// return Articles.find({limit: 4});
+Meteor.publish('articles', function(options){
+	 check(options , 
+	 	{
+	 		limit : Number
+	 	});
+
+	return Articles.find({isPublished : true}, { sort: {createdAt : -1}, limit : options.limit });
 });
 
 // on publie toutes les images
@@ -50,12 +54,7 @@ Meteor.publish('SingleComment', function(id){
 	return [Comments.find({_id: id}), Articles.find({ _id : comment.articleId })];
 });
 
-// Mes commentaires qui ont été liké
-Meteor.publish('mesCommentairesLiked', function(){
-	comments = Comments.find({ userId : this.userId, nbLikes: { $gt : 0} });
-	console.log("mes comments likés :"+comments.count());
-	return comments ;
-});
+
 
 
 // l'image de fond associée à 1 article
@@ -98,28 +97,20 @@ Meteor.publish('avatarUser', function(id){
 	return Avatars.find({ userId : id });
 });
 
-// On publie les likes de l'utilisateur connecté
-Meteor.publish('mesLikes', function() {
-	return Likes.find({ userId : this.userId });
+// J'aime reçus :
+// Mes commentaires qui ont été liké
+Meteor.publish('myCommentsLiked', function(){
+	comments = Comments.find({ userId : this.userId, nbLikes: { $gt : 0} });
+	//console.log("j'aime reçus :"+comments.count());
+	return comments ;
 });
 
-// On publie les likes par typ  
-Meteor.publish('likesByTyp', function(typ) {
-	return Likes.find({ typ: typ });
+// j'aime postés :
+// Commentaires que j'ai liké ==> commentaires qui ont dans leur liker : moi
+
+Meteor.publish('commentsLikedByMe', function(){
+	comments = Comments.find({ likers : this.userId });
+	//console.log("j aime postés :"+comments.count());
+	return comments ;
 });
-
-// la liste des utilisateurs qui ont liké un commentaire donné
-// Meteor.publish('likersComment', function(commentId) {
-// 	check(commentId,String);
-// 	l = Likes.find({typ: 'commentaire', ReceiverId:commentId }, {fields: { userId:true }}) ;
-// 	console.log("publication de "+l.count() + " likes pour le comment "+commentId);
-// 	return l;
-// });
-
-// Meteor.publish('lesCommentairesQueJaiLikes', function() {
-// 	var commentIds = _.pluck(Likes.find({ typ: 'commentaire', userId : this.userId },{fields: { ReceiverId:true }}).fetch(),'ReceiverId');
-// 	console.log(" commentIds : "+ commentIds);
-// 	return Comments.find({ _id : {$in : commentIds }}) ; 
-
-// });
 

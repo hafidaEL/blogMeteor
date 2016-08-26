@@ -3,8 +3,7 @@ Template.adminCommentaire.onCreated(function(){
 		// id commentaire courant : Template.currentData()._id 
 		if (Session.get('commentsMode') == 'received')
 		{
-			//console.log("subscribe aux likes de "+Template.currentData()._id);
-			//this.subscribe('likersComment', Template.currentData()._id);
+			
 		} 
 
 	});

@@ -8,23 +8,21 @@ Template.Commentaires.onCreated(function(){
 			this.subscribe('comments');
 		}
 		else if (commentsMode == 'my') {
-			this.subscribe('comments');
-			// this.subscribe('mesCommentaires');
+			this.subscribe('comments');   // à cause des compteurs on filtre pas ici, mais dans le helper
+			//this.subscribe('mesCommentaires');
 		}
 		else if (commentsMode == 'received') {
-			//this.subscribe('mesCommentairesLiked');
-			//this.subscribe('likesByTyp', 'commentaire');
+			this.subscribe('myCommentsLiked');
 		}
 		else if (commentsMode == 'sent'){
-			// this.subscribe('mesLikes');
-			// this.subscribe('lesCommentairesQueJaiLikes');
+			this.subscribe('commentsLikedByMe');
 		}
 
 		
 	});
 
-
 	Session.setDefault('commentsMode', 'all');
+	
 });
 
 Template.Commentaires.helpers({
@@ -41,7 +39,6 @@ Template.Commentaires.helpers({
 		return Comments.find({ userId : Meteor.userId() }).count();
 	},
 	isActif : (id) => {
-		//console.log("id ="+ id);
 		return Session.get('commentsMode') == id ? "active" : "";
 	}
 });

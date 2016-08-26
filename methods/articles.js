@@ -14,10 +14,10 @@ Meteor.methods({
 				     author: Meteor.user().username,
 				     nbComments: 0,
 				     nbLikes: 0,
+				     likers : [],
 				     isPublished: false,
 				     content: contenu,
 				     createdAt: new Date(),
-				    // image: '/nenuphar.jpg',
 				     imageId : imageId
 	   		});
 	   		console.log("updating "+imageId+" articleId "+articleId);

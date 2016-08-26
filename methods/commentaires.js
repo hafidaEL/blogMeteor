@@ -21,8 +21,8 @@ Meteor.methods({
 				     author: Meteor.user().profile.prenom + " " + Meteor.user().profile.nom,
 				     body : body,
 				     nbLikes: 0,
-				     createdAt: new Date()
-				     
+				     likers : [],
+				     createdAt: new Date()   
 	   		});
 	   		// mise à jour du nb de commentaires dans l'article
 	   		Articles.update(articleId, {$inc: {nbComments: 1}});

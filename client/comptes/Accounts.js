@@ -2,14 +2,13 @@ var mySubmitFunc = function(error, state){
   if (!error) {
     if (state === "signIn") {
       // connexion réussie
-      console.log('signIn ok ');
+      // console.log('signIn ok ');
       
     }
     if (state === "signUp") {
       // inscription réussie
-      var userId = Meteor.userId();
-      console.log("nouvel utilisateur : "+user);
-      
+      // var userId = Meteor.userId();
+      // console.log('signup ok ');
     }
   }
 };

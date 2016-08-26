@@ -5,7 +5,6 @@ Template.SingleArticle.onCreated(function(){
 		this.subscribe('commentsArticle', id);
 		this.subscribe('imageArticle', id);
 		this.subscribe('avatars');
-		this.subscribe('mesLikes');
 	});
 });
 
@@ -20,11 +19,22 @@ Template.SingleArticle.helpers({
 	image : () => {
 		return Images.findOne();
 	},
-	liked : (idArticle)=> {
-	  	var like = Likes.findOne({ typ: "article", userId : Meteor.userId(), ReceiverId : idArticle });
-	  	if (like)
-	  		return "red-text";
-  }
+	liked : function (idArticle) {
+		 var userId = Meteor.userId();
+		 var article = Articles.findOne();
+		 // ici lecture : affichage du coeur rouge ou pas
+		 //console.log("article.likers " + article.likers);
+    	 if (userId && !_.include(article.likers, userId))
+    	 {
+    	 	console.log("user pas dans les likers ");
+    	 	return ""
+    	 }
+    	 else
+    	 {
+    	 	console.log("user dans les likers ");
+    	 	return "red-text";
+    	 }
+  	}
 });
 
 
@@ -34,13 +44,13 @@ Template.SingleArticle.events({
 	   	  return;
 		var id = $(e.currentTarget).attr('data-id');
 		console.log("id de l'article : " + id);
-		Meteor.call('likesArtComment', id, "article", function(err, result) {
-				console.log("retour du like "+result);
-		      	if (result !=''){
-		      		$(e.currentTarget).addClass(result);
-		      	}
-		      	else{
+		Meteor.call('likesArticleComment', id, "article", function(err, result) {
+				//console.log("retour du like "+result);
+		      	if (result =='suppressionOK') {
 		      		$(e.currentTarget).removeClass("red-text");
+		      	}
+		      	else if (result == 'ajoutOK') {
+		      		$(e.currentTarget).addClass("red-text");
 		      	}
 		});
 	}
