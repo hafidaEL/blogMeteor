@@ -26,12 +26,12 @@ Template.SingleArticle.helpers({
 		 //console.log("article.likers " + article.likers);
     	 if (userId && !_.include(article.likers, userId))
     	 {
-    	 	console.log("user pas dans les likers ");
+    	 	// console.log("user pas dans les likers ");
     	 	return ""
     	 }
     	 else
     	 {
-    	 	console.log("user dans les likers ");
+    	 	// console.log("user dans les likers ");
     	 	return "red-text";
     	 }
   	}
@@ -43,7 +43,7 @@ Template.SingleArticle.events({
 		if (! Meteor.user() )
 	   	  return;
 		var id = $(e.currentTarget).attr('data-id');
-		console.log("id de l'article : " + id);
+		//console.log("id de l'article : " + id);
 		Meteor.call('likesArticleComment', id, "article", function(err, result) {
 				//console.log("retour du like "+result);
 		      	if (result =='suppressionOK') {

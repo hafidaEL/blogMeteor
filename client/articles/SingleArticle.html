@@ -9,14 +9,14 @@
               <img class="bkg_img" src="{{image.data}}" style="width: 30%;">
               <div class="card-title black-text">
               	{{article.title}}<hr> <br>	
-      			    <i id="likesArticle" class="fa fa-heart {{ liked article._id}}" aria-hidden="true" data-id={{article._id}}></i>
+      			    <i id="likesArticle" class="fa fa-heart {{ liked article._id}} pointeur" aria-hidden="true" data-id={{article._id}}></i>
         				<span class="black-text">{{article.nbLikes}} j'aime</span>
         				<i class="fa fa-comments black-text" aria-hidden="true"></i> 
-        				<span class="black-text">{{article.nbComments}} commentaires</span>
+        				<span class="black-text">{{article.nbComments}} commentaire(s)</span>
               </div>
             </div>
             <div class="card">
-              <p>{{article.content}}</p>
+              <p>{{{article.content}}}</p>
             </div>
               
             {{#each commentaires}}

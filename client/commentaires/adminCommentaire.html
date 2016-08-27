@@ -13,12 +13,10 @@
                   <a id="editId" href="#" class="btn-floating waves-effect waves-light yellow" data-id={{_id}}><i class="material-icons">mode_edit</i></a>
                   <a id="deleteId" href="#" class="btn-floating waves-effect waves-light red" data-id={{_id}}><i class="material-icons">delete</i></a>     
                 {{/if}}
-                {{#if Template.subscriptionsReady}}
+                {{#if receivedMode}}
                  {{#each likers }}
-                    [ {{ profile.nom }}{{ profile.prenom }} ]
+                    <img width="35" title="{{ profile.nom }} {{ profile.prenom }}" src={{ avatarLiker profile.avatarId }}>
                  {{/each}}
-                {{else}}
-                     {{> monLoader}}
                 {{/if}}
             </div>
           </div>

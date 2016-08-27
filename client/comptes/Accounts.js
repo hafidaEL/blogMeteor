@@ -18,17 +18,24 @@ var myLogoutFunc = function(){
 };
 
 
-
 AccountsTemplates.configure({
     onSubmitHook: mySubmitFunc,
     onLogoutHook: myLogoutFunc,
      texts: {
       title: {
         signIn: "",
-        signUp:"Créer un compte"
-      }
+        signUp: ""
+      },
+      signInLink_pre: "si vous avez déjà un compte : ",
+      signInLink_link: "connexion",
+      signInLink_suff: "",
+      signUpLink_pre: "créer un compte",
+      signUpLink_link: "inscription",
     }
 });
+
+
+
 
 AccountsTemplates.removeField('password');
 AccountsTemplates.addFields([

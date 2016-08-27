@@ -1,6 +1,6 @@
 Template.CommentItem.onCreated(function(){
 	this.autorun(() => {
-        // this.subscribe('mesLikes');
+        //console.log ('id Comment : '+ Template.currentData()._id );
 	});
 });
 

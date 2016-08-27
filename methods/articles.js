@@ -1,17 +1,16 @@
 Meteor.methods({
 	insertArticle : function(title, contenu, imageId) {
-		console.log("insertArticle "+title+" "+contenu) ;
+		//console.log("insertArticle "+title+" "+contenu) ;
 
 		check(title, String);
 		check(contenu, String);
 		check(imageId, String);
         var currentUserId = Meteor.userId();
-        console.log("currentUserID : "+currentUserId);
         if(currentUserId){
 			articleId = Articles.insert({
 				     title: title,
 				     userId: currentUserId,
-				     author: Meteor.user().username,
+				     author: Meteor.user().profile.prenom + " " + Meteor.user().profile.nom,
 				     nbComments: 0,
 				     nbLikes: 0,
 				     likers : [],
@@ -20,7 +19,7 @@ Meteor.methods({
 				     createdAt: new Date(),
 				     imageId : imageId
 	   		});
-	   		console.log("updating "+imageId+" articleId "+articleId);
+	   		//console.log("updating "+imageId+" articleId "+articleId);
 	   		Images.update(imageId, { $set : { articleId : articleId }}) ;
 
 			return {
@@ -49,7 +48,11 @@ Meteor.methods({
 		check(id, String);
  		var currentUserId = Meteor.userId();
         if(currentUserId){
+        	var art = Articles.findOne(id);
+        	Images.remove(art.imageId);
+			Comments.remove({articleId: id});
 			Articles.remove(id);
+
 		}
 
 	},

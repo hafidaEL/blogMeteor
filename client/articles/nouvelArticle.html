@@ -10,17 +10,20 @@
       </div>
        <div class="row">
         <div class="input-field col s12">
-          <textarea id="content" class="materialize-textarea"></textarea>
+          <textarea id="content" class="materialize-textarea"></textarea> 
           <label for="content">Article</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+        <label for="imgArticle">Sélectionner une image</label>
         </div>
       </div>
        <div class="row">
         <div class="input-field col s12">
           <input id="imgArticle" type="file">
-          <label for="imgArticle">Sélectionner une image</label>
         </div>
       </div>
-      imageId : {{ $.Session.get 'imageId' }}
       <img id="vignette" src="">
       <button id="sauvegarder" class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder
        <i class="material-icons right"></i>

@@ -1,24 +1,19 @@
 Template.Commentaires.onCreated(function(){
 	this.autorun(() => {
 
-		
-        this.subscribe('articles');
 		var commentsMode = Session.get('commentsMode');
 		if (commentsMode == 'all') {
 			this.subscribe('comments');
 		}
 		else if (commentsMode == 'my') {
-			this.subscribe('comments');   // à cause des compteurs on filtre pas ici, mais dans le helper
-			//this.subscribe('mesCommentaires');
+			this.subscribe('myComments');
 		}
 		else if (commentsMode == 'received') {
-			this.subscribe('myCommentsLiked');
+			this.subscribe('myCommentsLiked'); // J'aime reçus
 		}
 		else if (commentsMode == 'sent'){
-			this.subscribe('commentsLikedByMe');
+			this.subscribe('commentsLikedByMe'); // J'aime postés
 		}
-
-		
 	});
 
 	Session.setDefault('commentsMode', 'all');
@@ -27,16 +22,7 @@ Template.Commentaires.onCreated(function(){
 
 Template.Commentaires.helpers({
 	commentaires : () => {
-		if (Session.get('commentsMode') == 'my') {
-			return Comments.find({ userId : Meteor.userId() }, {sort: {createdAt: -1 }});
-		}
 		return Comments.find({}, {sort: {createdAt: -1 }});
-	},
-	nbCommentaires : () => {
-		return Comments.find().count();
-	},
-	nbMesCommentaires : () => {
-		return Comments.find({ userId : Meteor.userId() }).count();
 	},
 	isActif : (id) => {
 		return Session.get('commentsMode') == id ? "active" : "";

@@ -1,5 +1,6 @@
 // Les publications
 
+
 Meteor.publish('articles', function(options){
 	 check(options , 
 	 	{
@@ -39,22 +40,26 @@ Meteor.publish('comments', function(){
 });
 
 // Mes commentaires
-Meteor.publish('mesCommentaires', function(){
+Meteor.publish('myComments', function(){
 	return Comments.find({ userId : this.userId });
 });
 
-// un commentaire donné
+// etant donné un id de commentaire, renvoit le commentaire et l'article associé
 Meteor.publish('SingleComment', function(id){
 	check(id,String);
-
 	comment = Comments.findOne({_id: id});
-	console.log("comment.articleId : " + comment.articleId);
-	a = Articles.find({ _id : comment.articleId }) ;
-	console.log("article.count : " + a.count());
+	// console.log("comment.articleId : " + comment.articleId);
+	// a = Articles.find({ _id : comment.articleId }) ;
+	// console.log("article.count : " + a.count());
 	return [Comments.find({_id: id}), Articles.find({ _id : comment.articleId })];
 });
 
-
+// etant donné un id de commentaire, renvoit l'article associé
+Meteor.publish('articleCommentaire', function(id){
+	check(id,String);
+	comment = Comments.findOne({_id: id});
+	return Articles.find({ _id : comment.articleId });
+});
 
 
 // l'image de fond associée à 1 article
@@ -85,13 +90,6 @@ Meteor.publish('SingleUser', function() {
 	return Meteor.users.find({ userId : this.userId });
 });
 
-// on publie les notifications personnalisé pour chaque admin
-Meteor.publish('notifications', function() {
-	if (Roles.userIsInRole(this.userId, 'admin')) {
-		return Notifications.find({userId : this.userId });
-	}
-});
-
 // avatar d'un utilisateur donné
 Meteor.publish('avatarUser', function(id){
 	return Avatars.find({ userId : id });
@@ -101,7 +99,6 @@ Meteor.publish('avatarUser', function(id){
 // Mes commentaires qui ont été liké
 Meteor.publish('myCommentsLiked', function(){
 	comments = Comments.find({ userId : this.userId, nbLikes: { $gt : 0} });
-	//console.log("j'aime reçus :"+comments.count());
 	return comments ;
 });
 

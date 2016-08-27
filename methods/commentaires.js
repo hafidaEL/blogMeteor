@@ -27,17 +27,7 @@ Meteor.methods({
 	   		// mise à jour du nb de commentaires dans l'article
 	   		Articles.update(articleId, {$inc: {nbComments: 1}});
 
-	   		// Pour éviter de se prévenir soit même
-	   		if (currentUserId !== article.userId){
-		   		// Créer une notification pour l'auteur de l'article qu'un commentaire a été écrit
-		   		Notifications.insert({
-					userId : article.userId, //auteur de l'article celui qui reçoit la notification
-					commentateur : Meteor.user().profile.prenom,
-					commentaireId : commentaireId,
-					articleId : articleId,
-					read : false
-				});	
-		   	}
+	   		
 	   	}
 	},
 	deleteComment : (commentId) => {

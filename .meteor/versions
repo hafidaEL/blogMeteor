@@ -46,7 +46,7 @@ livedata@1.0.18
 localstorage@1.0.11
 logging@1.1.14
 materialize:materialize@0.97.7
-meteor@1.2.16
+meteor@1.2.17
 meteor-base@1.0.4
 meteortoys:allthings@3.0.0
 meteortoys:authenticate@3.0.0

@@ -19,7 +19,7 @@ Template.MesArticlesItem.helpers({
 		return isPublished ? "checked" : "";
 	},
 	vignette : 	(imageId) => {
-		console.log("recherche vignette "+imageId);
+		// console.log("recherche vignette "+imageId);
 		image = Images.findOne({ _id : imageId })
 		if (image != undefined)
 			return image.data;

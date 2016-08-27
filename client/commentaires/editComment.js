@@ -17,8 +17,10 @@ Template.editComment.events({
 		var body = e.target.body.value;
 		let id = FlowRouter.getParam('id');
 		Meteor.call('updateComment', id, body, function(err, result){
-			if (err)
-				console.log(err)
+			if (err) {
+				Materialize.toast("erreur lors de la mise à jour du commentaire ", 2000);
+				console.log(err);
+			}
 			else
 				FlowRouter.go('/commentaire/'+id);
 		});
