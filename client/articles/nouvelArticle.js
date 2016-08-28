@@ -30,10 +30,17 @@ Template.nouvelArticle.events({
 		var name = e.target.files[0].name;
 	    if (!file) return;
 	    if (!file.type.match('image.*')){
-	    	Materialize.toast(" Format de fichier non autorisé !!");
+	    	Materialize.toast(" Format de fichier non autorisé !!",2000);
 	    	console.log(" Format de fichier non autorisé !!");
+	    	$("#imgArticle").val("");
 	    	return;
 	    }
+	    if (file.size > 1048576) {
+	    	Materialize.toast(" Image trop lourde. ",2000);
+	    	$("#imgArticle").val("");
+	    	return;
+	    }
+
 	    var reader = new FileReader(); 
 	    reader.onload=function(fichier){      
 		      var buffer=reader.result;
@@ -45,7 +52,6 @@ Template.nouvelArticle.events({
 		      	}
 		      	else
 		      		{
-		      			//console.log("result._id : " + result._id);
 		      			Session.set("imageId",result._id);
 		      		}
 		      });
