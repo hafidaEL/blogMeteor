@@ -22,7 +22,9 @@ Template.SideBarMobile.helpers({
 		return Meteor.users.findOne().emails[0].address;
 	},
 	avatar : ()=> {
-		return Avatars.findOne().data;
+		var av = Avatars.findOne();
+		if (av)
+			return av.data;
 	}
 });
 
