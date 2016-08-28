@@ -1,38 +1,42 @@
 <template name="Users">
 	{{#if isInRole 'admin'}}
 	 {{#if Template.subscriptionsReady}}
-		<h1>Liste des comptes</h1>
-		<table class="striped bordered">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Email</th>
-					<th>Nom</th>
-					<th>Crée le</th>
-					<th>Admin</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each users}}
-				<tr>
-					<td>{{_id}} </td>
-					<td>{{ userEmail }}</td>
-					<td>{{profile.nom}}</td>
-					<td>{{dateCreation createdAt}}</td>
-					<td>
-						{{#if notMe }}
-						  <div class="switch">
-						   <label>
-						      <input class="toggleAdmin" type="checkbox" {{ isAdmin }} data-id="{{ _id }}"> 
-						      <span class="lever"></span>
-						   </label>
-						  </div>
-						 {{/if}} 
-					</td>
-				</tr>
-				{{/each}}
-			</tbody>
-		</table>
+	<p class="flow-text">Liste des utilisateurs :</p>
+		<div class="row">
+			<div class="col s12">
+				<table class="striped bordered">
+					<thead>
+						<tr>
+							<th class="hide-on-med-and-down">Id</th>
+							<th>Email</th>
+							<th>Nom</th>
+							<th>Crée le</th>
+							<th>Admin</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each users}}
+						<tr>
+							<td class="hide-on-med-and-down">{{_id}} </td>
+							<td>{{ userEmail }}</td>
+							<td>{{profile.nom}}</td>
+							<td>{{dateCreation createdAt}}</td>
+							<td>
+								{{#if notMe }}
+								  <div class="switch">
+								   <label>
+								      <input class="toggleAdmin" type="checkbox" {{ isAdmin }} data-id="{{ _id }}"> 
+								      <span class="lever"></span>
+								   </label>
+								  </div>
+								 {{/if}} 
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+		</div>
 		{{/if}}	
 	{{/if}}
 </template>

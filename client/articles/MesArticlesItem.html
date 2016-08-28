@@ -1,20 +1,12 @@
 <template name="MesArticlesItem">
 	<tr>
-  		<td>
-	  	  <div class="col s12 m8 offset-m2 l6">
-	       
-	          <div class="row valign-wrapper">
-	            <div class="col s2">
-	              <a href="/article/{{ _id }}"><img src="{{ vignette imageId }}" alt="" class="circle responsive-img vignette_size"></a>
-	            </div>
-	            <div class="col s10">
-	              <span class="black-text">
-	                <a href="/article/{{ _id }}">{{title}}</a>
-	              </span>
-	            </div>
-	          </div>
-	        
-	      </div>
+  		<td>	       
+			<a href="/article/{{ _id }}">
+					<img src="{{ vignette imageId }}" alt="" class="circle" style="width: 10%;">
+			</a>
+            <span class="black-text">
+                <a href="/article/{{ _id }}">{{title}}</a>
+            </span>      
   		</td>
   		<td>	 
 			  <div class="switch">
@@ -26,8 +18,10 @@
   		</td>
   		  {{#if currentUser}}
   		<td>
+  			 <div class="dsp_flex">
   			<a class="btn-floating yellow darken-1"><i id="pencil" class="material-icons" data-id="{{ _id }}" aria-hidden="true">mode_edit</i></a>
   			<a class="btn-floating red"><i id="trash" class="material-icons" data-id="{{ _id }}" aria-hidden="true">delete</i></a>
+  			</div>
   		</td>
   		  {{/if}}
 	</tr>

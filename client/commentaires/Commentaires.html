@@ -1,6 +1,6 @@
 <template name="Commentaires">
 <div class="row">
-	<div class="col s3">
+	<div class="col s4">
 		<div class="collection">
 		    <a href="#" id="all" class="collection-item {{ isActif "all" }}">Tout</a>
 		    <a href="#" id="my" class="collection-item {{ isActif "my" }}">Postés</a>
@@ -9,7 +9,7 @@
 	 	</div>
 	</div>
 {{#if Template.subscriptionsReady}}
-	<div class="col s9">
+	<div class="col s8">
 		{{#each commentaires}}
 			{{> adminCommentaire }}
 		{{/each}}

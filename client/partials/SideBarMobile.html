@@ -8,15 +8,16 @@
 		</div></li>
 	    <li><a id="home" class="waves-effect"><i class="material-icons">home</i>Accueil</a></li>
 		{{#if isInRole 'admin'}}
-		  <li><a id="mesArticles">Mes articles</a></li>
-		  <li><a id="users">Utilisateurs</a></li>
+		  <li><a id="mesArticles" class="waves-effect"><i class="material-icons">create</i>Mes articles</a></li>
+		  <li><a id="users" class="waves-effect"><i class="material-icons">list</i>Utilisateurs</a></li>
   		{{/if}}	
-		  <li><a id="profil">Profil</a></li>	
-		  <li><a id="commentaires">Commentaires</a></li>  	
-	    <li><div class="divider"></div></li>
-	    <li><a class="waves-effect boutonLogout">
-	    	<i class="material-icons">power_settings_new</i>Déconnexion</a>
-	    </li>
+		<li><a id="profil" class="waves-effect"><i class="material-icons">account_circle</i>Profil</a></li>	
+		<li><a id="commentaires" class="waves-effect"><i class="material-icons">comment</i>Commentaires</a></li>  	
+		<li><div class="divider"></div></li>
+		<li><a class="waves-effect boutonLogout">
+			<i class="material-icons">power_settings_new</i>Déconnexion</a>
+		</li>
   	</ul>
   	<a href="#" data-activates="mobileMenu" class="button-collapse"><i class="material-icons">menu</i></a>
 </template>
+
