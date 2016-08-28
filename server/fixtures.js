@@ -1,6 +1,4 @@
  if (Articles.find().count() < -333) {
-
-
    console.log("remplissage de la base (fixtures) ") ;
    var now = new Date().getTime();
 
