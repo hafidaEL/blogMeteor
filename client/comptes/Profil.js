@@ -30,14 +30,16 @@ Template.Profil.events({
   		var avatarId = e.target.avatarId.value;
 		//var avatarId = Session.get("avatarId");
 		if (pwd != new_pwd) {
-			alert("mot de passe différents !!");
+			Materialize.toast("Mots de passe différents ",2000);
 			return;
 		}
 		var objet = { email : email, password : pwd , avatarId : avatarId , nom : nom , prenom : prenom };
 
 		Meteor.call('updateProfil', objet , function(err, result){
-			if (err)
+			if (err) {
+				Materialize.toast("erreur lors de l'update du profil ",2000);
 				console.log("updateProfil erreur : "+err)
+			}
 			else
 				FlowRouter.go('/');
 		});
@@ -48,19 +50,29 @@ Template.Profil.events({
 		var name = e.target.files[0].name;
 	    if (!file) return;
 	    if (!file.type.match('image.*')){
-	    	alert("format de fichier non autorisé");
+	    	Materialize.toast("format de fichier non autorisé ",2000);
+	    	$("#avatar").val("");
 	    	return;
 	    }
+
+	    if (file.size > 500576) {
+	    	Materialize.toast(" avatar trop lourd. ",2000);
+	    	$("#avatar").val("");
+	    	return;
+	    }
+
 	    var reader = new FileReader(); 
 	    reader.onload=function(fichier){      
 		      var buffer=reader.result;
 		      $("#vignette").attr("src",buffer);
 		      Meteor.call('saveAvatar', name, buffer,function(err, result) {
-		      	if (err)
-		      		console.log("erreur saveAvatar : " + err)
+		      	if (err) {
+		      		Materialize.toast(" erreur lors de la sauvegarde de l'avatar ",2000);
+		      		console.log("erreur saveAvatar : " + err);
+		      	}
 		      	else
 		      		{
-		      			console.log("result._id : " + result._id);
+		      			//console.log("result._id : " + result._id);
 		      			//Session.set("avatarId",result._id);
 		      			$("#avatarId").val(result._id);
 		      		}

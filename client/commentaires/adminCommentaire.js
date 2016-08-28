@@ -53,6 +53,7 @@ Template.adminCommentaire.events({
 		Meteor.call('deleteComment', commentId, function(err, result) {
 				console.log("retour du deleteComment "+result);
 		});
+
 	},
 	'click #editId' : (e) => {
 		var commentId = $(e.currentTarget).attr('data-id');

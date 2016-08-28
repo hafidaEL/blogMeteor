@@ -13,7 +13,7 @@ Meteor.methods({
 			    if (!article)
 			      throw new Meteor.Error('commentaireInvalide', 'article inconnu');
 
-			console.log("l'auteur du commentaire : " + Meteor.user().profile.prenom);
+			// console.log("l'auteur du commentaire : " + Meteor.user().profile.prenom);
 			// On ajoute le commentaire
 			commentaireId = Comments.insert({
 					 articleId: articleId,

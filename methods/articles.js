@@ -59,7 +59,7 @@ Meteor.methods({
 	togglePublishArticle : (id)	=>	{
 		check(id, String);
 		var art = Articles.findOne(id);
-		console.log("id de l'article : " + id);
+		//console.log("id de l'article : " + id);
 		Articles.update(id, { $set : { isPublished : !art.isPublished }});
 	}
 

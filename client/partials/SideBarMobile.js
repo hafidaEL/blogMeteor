@@ -8,7 +8,7 @@ Template.SideBarMobile.onCreated(function(){
 
 
 Template.SideBarMobile.onRendered(function(){
-	console.log("SideBarMobile onrendered ");
+	// console.log("SideBarMobile onrendered ");
 	this.$('.button-collapse').sideNav({ closeOnClick: true });
 	
 });
