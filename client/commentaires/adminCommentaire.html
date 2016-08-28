@@ -8,15 +8,17 @@
             <div class="card-action"> 
                 <i class="fa fa-heart red-text" aria-hidden="true"></i> 
                 <span class="black-text" style="margin-right: 60%;">{{nbLikes}} j'aime</span>
+                {{#if receivedMode}}
+                <div class="row">
+                 {{#each likers }}
+                    <img width="35" title="{{ profile.nom }} {{ profile.prenom }}" src={{ avatarLiker profile.avatarId }}>
+                 {{/each}}
+                 </div>
+                {{/if}}
                 <a id="voir" href="#" class="btn waves-effect waves-light blue right" data-id={{_id}}>VOIR</a>
                 {{#if owner userId}}
                   <a id="editId" href="#" class="btn-floating waves-effect waves-light yellow" data-id={{_id}}><i class="material-icons">mode_edit</i></a>
                   <a id="deleteId" href="#" class="btn-floating waves-effect waves-light red" data-id={{_id}}><i class="material-icons">delete</i></a>     
-                {{/if}}
-                {{#if receivedMode}}
-                 {{#each likers }}
-                    <img width="35" title="{{ profile.nom }} {{ profile.prenom }}" src={{ avatarLiker profile.avatarId }}>
-                 {{/each}}
                 {{/if}}
             </div>
           </div>
