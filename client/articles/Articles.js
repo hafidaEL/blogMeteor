@@ -13,7 +13,7 @@ Template.Articles.helpers({
 });
 
 Template.Articles.events({
-	'click,touchstart #voirPlus' : (e) => {
+	'click #voirPlus' : (e) => {
 	 	Session.set('limit', Session.get('limit') + 10 );  // +10 à chaque clic
 	}
 });

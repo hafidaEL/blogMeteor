@@ -2,7 +2,10 @@ Template.Header.onCreated(function(){
 	this.autorun( () => {
 		this.subscribe('avatarUser', Meteor.userId());
 	});
-
+	$('li').each(function(){
+	    this.onclick = function() {}
+	});							
+	$('#profil').onclick = function() {} ;
 });
 
 
@@ -16,34 +19,34 @@ Template.Header.helpers({
 
 
 Template.Header.events({
-	'click,touchstart #mesArticles' : () => {
+	'click #mesArticles' : () => {
 		//console.log("mesarticles");
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('mes-articles');
 	},
-	'click,touchstart #commentaires' : () => {
+	'click #commentaires' : () => {
 		//console.log("commentaires");
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('commentaires');
 	},
-	'click,touchstart #boutonLogin' : () => {
+	'click #boutonLogin' : () => {
 		Session.set('modal-toggle','open'); // fait apparaitre la modal Box
 	},
-	'click,touchstart .boutonLogout' : () => {
+	'click .boutonLogout' : () => {
 		$(".button-collapse").sideNav('hide');
 		AccountsTemplates.logout();
 		Session.set('modal-toggle', '');
 	},
-	'click,touchstart #users' : () => {
+	'click #users' : () => {
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('users');
 	},
-	'click,touchstart #profil' : () => {
+	'click #profil' : () => {
 		//console.log("profil");
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('profil');
 	},
-	'click,touchstart #home' : () => {
+	'click #home' : () => {
 		//console.log("home");
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('home');
