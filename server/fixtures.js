@@ -1,6 +1,5 @@
  if (Articles.find().count() < -333) {
 
-   var BASEURL="localhost:3000/" ;
 
    console.log("remplissage de la base (fixtures) ") ;
    var now = new Date().getTime();
