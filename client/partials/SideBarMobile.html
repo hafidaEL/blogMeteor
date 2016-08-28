@@ -1,26 +1,25 @@
 <template name="SideBarMobile">
 {{#if Template.subscriptionsReady}}
-	<ul id="slide-out" class="side-nav">
-	    <li>
-		    <div class="userView">
+	<ul id="mobileMenu" class="side-nav">
+	    <li><div class="userView">
 		      <img class="background" src="/blog.jpg">
 		      <a><img class="circle" src={{avatar}}></a>
 		      <a><span class="white-text name">{{user.profile.nom}} {{user.profile.prenom}}</span></a>
 		      <a><span class="white-text email">{{email}}</span></a>
-		    </div>
-	    </li>
+		</div></li>
 	    <li><a id="home" class="waves-effect"><i class="material-icons">home</i>Accueil</a></li>
-	    <li>
-	    	<a class="waves-effect dropdown-button" href="#" data-activates="dropdownMobile">
-		    	<i class="material-icons">settings</i>
-		    	Administration
-		    	<i class="material-icons right">arrow_drop_down</i>
-	    	</a>
-	    </li>
-			{{> DropdownMobile }}
+		{{#if isInRole 'admin'}}
+		  <li><a id="mesArticles">Mes articles</a></li>
+		  <li><a id="users">Utilisateurs</a></li>
+  		{{/if}}	
+		  <li><a id="profil">Profil</a></li>	
+		  <li><a id="commentaires">Commentaires</a></li>  	
 	    <li><div class="divider"></div></li>
-	    <li><a class="waves-effect boutonLogout"><i class="material-icons">power_settings_new</i>Déconnexion</a></li>
+	    <li><a class="waves-effect boutonLogout">
+	    	<i class="material-icons">power_settings_new</i>Déconnexion</a>
+	    </li>
   	</ul>
-  	<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+  	<a href="#" data-activates="mobileMenu" class="button-collapse"><i class="material-icons">menu</i></a>
+
 {{/if}}
 </template>

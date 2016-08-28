@@ -20,9 +20,9 @@ Template.MesArticlesItem.helpers({
 	},
 	vignette : 	(imageId) => {
 		// console.log("recherche vignette "+imageId);
-		image = Images.findOne({ _id : imageId })
-		if (image != undefined)
+		image = Images.findOne({ _id : imageId });
+		if (image)
 			return image.data;
-		return "/nenuphar.png";
+		
 	}
 });

@@ -7,6 +7,13 @@ Template.SideBarMobile.onCreated(function(){
 });
 
 
+Template.SideBarMobile.onRendered(function(){
+	console.log("SideBarMobile onrendered ");
+	this.$('.button-collapse').sideNav({ closeOnClick: true });
+	
+});
+
+
 Template.SideBarMobile.helpers({
 	user : () => {
 		return Meteor.users.findOne({});
