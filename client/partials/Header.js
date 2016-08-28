@@ -16,35 +16,35 @@ Template.Header.helpers({
 
 
 Template.Header.events({
-	'click #mesArticles' : () => {
-		console.log("mesarticles");
+	'click,touchstart #mesArticles' : () => {
+		//console.log("mesarticles");
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('mes-articles');
 	},
-	'click #commentaires' : () => {
-		console.log("commentaires");
+	'click,touchstart #commentaires' : () => {
+		//console.log("commentaires");
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('commentaires');
 	},
-	'click #boutonLogin' : () => {
+	'click,touchstart #boutonLogin' : () => {
 		Session.set('modal-toggle','open'); // fait apparaitre la modal Box
 	},
-	'click .boutonLogout' : () => {
+	'click,touchstart .boutonLogout' : () => {
 		$(".button-collapse").sideNav('hide');
 		AccountsTemplates.logout();
 		Session.set('modal-toggle', '');
 	},
-	'click #users' : () => {
+	'click,touchstart #users' : () => {
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('users');
 	},
-	'click #profil' : () => {
-		console.log("profil");
+	'click,touchstart #profil' : () => {
+		//console.log("profil");
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('profil');
 	},
-	'click #home' : () => {
-		console.log("home");
+	'click,touchstart #home' : () => {
+		//console.log("home");
 		$(".button-collapse").sideNav('hide');
 		FlowRouter.go('home');
 	}
