@@ -40,7 +40,7 @@ Meteor.methods({
 				console.log("erreur user non autorisé "+currentUserId);
 				throw new Meteor.Error('Not Authorized !');
 			}
-			Articles.update(id, { $set : { title : title , contenu : contenu }});
+			Articles.update(id, { $set : { title : title , content : contenu }});
 
 		}
 	},
