@@ -76,12 +76,11 @@ Meteor.publish('mesImages', function(){
 	return Images.find({ userId : this.userId });
 });
 
-// on publie la liste uniquement aux admins
 Meteor.publish('allUsers', function() {
-	if (Roles.userIsInRole(this.userId, 'admin')) {
+	//if (Roles.userIsInRole(this.userId, 'admin')) {
 		return Meteor.users.find({});
 	    // return Meteor.users.find({}, {fields: {username: 1, emails: 1, profile: 1}});
-	}
+	//}
 	
 });
 
