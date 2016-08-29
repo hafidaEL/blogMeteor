@@ -16,18 +16,27 @@ Meteor.methods({
         }
     },
     'saveAvatar': function(name, buffer){
+        console.log("saveAvatar ...") ; 
     	check(name, String);
 		check(buffer, String);
 		var currentUserId = Meteor.userId();
+        var avatarId;
         if(currentUserId) {
     		Avatars.remove( {userId : currentUserId });
-            var avatarId = Avatars.insert({
-            	name:name,
-            	data:buffer,
-            	userId: currentUserId
+            avatarId = Avatars.insert({
+                name:name,
+                data:buffer,
+                userId: currentUserId
             });
-            // console.log("retour de Avatars insert : "+avatarId);
-    		return { _id : avatarId };  
-        } 
+        }
+        else
+            avatarId = Avatars.insert({
+                name:name,
+                data:buffer 
+            });
+
+        console.log("avatarId : "+avatarId);
+    	return { _id : avatarId };  
+         
     }      
 });

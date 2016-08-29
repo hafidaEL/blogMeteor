@@ -13,7 +13,9 @@ Template.Profil.helpers({
 		return Meteor.users.findOne().emails[0].address;
 	},
 	avatar : ()=> {
-		return Avatars.findOne().data;
+		av = Avatars.findOne({});
+		if (av) 
+			return av.data;
 	}
 });
 
@@ -38,7 +40,7 @@ Template.Profil.events({
 		Meteor.call('updateProfil', objet , function(err, result){
 			if (err) {
 				Materialize.toast("erreur lors de l'update du profil ",2000);
-				console.log("updateProfil erreur : "+err)
+				console.log("updateProfil erreur : "+err);
 			}
 			else
 				FlowRouter.go('/');
@@ -72,12 +74,13 @@ Template.Profil.events({
 		      	}
 		      	else
 		      		{
-		      			//console.log("result._id : " + result._id);
+		      			console.log("result._id : " + result._id);
 		      			//Session.set("avatarId",result._id);
 		      			$("#avatarId").val(result._id);
 		      		}
 		      });
 	    };
+
     	reader.readAsDataURL(file);  // base64
 	}
 

@@ -39,8 +39,10 @@ Template.LoginModal.events({
 		      var buffer=reader.result;
 		      $("#vignette").attr("src",buffer);
 		      Meteor.call('saveAvatar', name, buffer,function(err, result) {
-		      	if (err)
-		      		console.log("erreur saveAvatar : " + err)
+		      	if (err){
+		      		Materialize.toast("erreur lors de la sauvegarde de l'avatar ",2000);
+		      		console.log("erreur saveAvatar : " + err);
+		      	}
 		      	else
 		      		{
 		      			//console.log("result._id : " + result._id);
