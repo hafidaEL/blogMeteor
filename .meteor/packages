@@ -36,3 +36,5 @@ raix:handlebar-helpers
 
 aldeed:template-extension	# Pour personnaliser le template login atForm
 alanning:roles				# Pour creer des users avec un rôle utilisateur 
+meteorhacks:kadira
+meteorhacks:kadira-debug
