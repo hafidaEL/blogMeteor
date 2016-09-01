@@ -8,7 +8,7 @@ Template.Articles.onCreated(function(){
 
 Template.Articles.helpers({
 	articles : () => {
-		return Articles.find({}, {sort: {createdAt: -1 }});
+		return Articles.find();
 	}
 });
 

@@ -20,7 +20,10 @@ Meteor.methods({
 		//  email : email, password : pwd , avatarId : avatarId , 
 		//  nom : nom , prenom : prenom
 
-		Meteor.users.update(id, {$set: { 'profile.nom' : obj.nom }  });
+		Meteor.users.update(id, {$set: { 
+										 'profile.nom' : obj.nom ,
+		                                 'profile.prenom' : obj.prenom  , 
+		                                 'profile.avatarId' : obj.avatarId }  });
 		//console.log("obj password ("+obj.password+")");
 		if (obj.password != '')
 			Accounts.setPassword(id, obj.password, {logout : false});

@@ -24,7 +24,6 @@ Template.Profil.helpers({
 Template.Profil.events({
   'submit form' : (e) => {
   		e.preventDefault();
-  		var email = e.target.email.value;
   		var pwd = e.target.pwd.value;
   		var new_pwd = e.target.new_pwd.value;
   		var nom = e.target.nom.value;
@@ -35,7 +34,7 @@ Template.Profil.events({
 			Materialize.toast("Mots de passe différents ",2000);
 			return;
 		}
-		var objet = { email : email, password : pwd , avatarId : avatarId , nom : nom , prenom : prenom };
+		var objet = { password : pwd , avatarId : avatarId , nom : nom , prenom : prenom };
 
 		Meteor.call('updateProfil', objet , function(err, result){
 			if (err) {
