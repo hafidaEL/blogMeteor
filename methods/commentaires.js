@@ -5,6 +5,9 @@ Meteor.methods({
 	insertCommentaire : function(articleId, body) {
 		check(articleId, String);
 		check(body, String);
+		if (body == "") {
+			 throw new Meteor.Error('commentaireInvalide', 'Commentaire vide');
+		}
         var currentUserId = Meteor.userId();
        
         if(currentUserId){
@@ -44,6 +47,9 @@ Meteor.methods({
 	updateComment : (commentId, body) => {
 		check(commentId, String);
 		check(body, String);
+		if (body == "") {
+			 throw new Meteor.Error('commentaireInvalide', 'Commentaire vide');
+		}
 		var c = Comments.findOne(commentId);
 		var userId = c.userId;
 		var currentUserId = Meteor.userId();
