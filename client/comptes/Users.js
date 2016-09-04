@@ -16,7 +16,7 @@ Template.Users.helpers({
   	},
 	isAdmin : function () { 
 		var id = this._id;
-		console.log(">> id : "+id);
+		//console.log(">> id : "+id);
 		return Roles.userIsInRole(id, 'admin') ? "checked" : "";
 	},
 	dateCreation: (createdAt) => {
@@ -27,7 +27,7 @@ Template.Users.helpers({
 Template.Users.events({
 	'click .toggleAdmin' : function(e){
 		var id = $(e.currentTarget).attr('data-id');
-		console.log("click sur toggle admin "+id);
+		// console.log("click sur toggle admin "+id);
 		Meteor.call('toggleAdmin', id);
 	}
 })

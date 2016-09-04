@@ -11,9 +11,26 @@ meteor
 
 ouvrir le lien : http://localhost:3000 
 
+## pour passer un utilisateur en admin 
+
+activer MeteorToys (CTRL+M)
+deplier user et cliquer sur update
+remplacer  "roles": [
+    "utilisateur"
+      ]
+par
+ "roles": [
+     "utilisateur",
+     "admin"
+       ]
+sauvegarder
+
+
 ## Remarques : 
 * Les images des articles sont limitées à 1 poids d'1 Mo.
 * Les images des avatars sont limitées à 1 poids de 500 Ko.
+
+
 
 ## How To Use
 

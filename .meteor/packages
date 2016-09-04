@@ -35,6 +35,6 @@ useraccounts:unstyled
 raix:handlebar-helpers
 
 aldeed:template-extension	# Pour personnaliser le template login atForm
-alanning:roles				# Pour creer des users avec un rôle utilisateur 
+alanning:roles				# Pour creer des users avec un rôle utilisateur et/ou admin
 meteorhacks:kadira
 kadira:debug
