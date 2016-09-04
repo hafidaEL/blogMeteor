@@ -1,6 +1,17 @@
-
-
  if (Articles.find().count() < -333) {
+  // creation des index pour eviter les collscan
+  console.log("Creation des index !!"); 
+  Images.createIndex({ "userId" : 1}) ;
+  Articles.createIndex({"isPublished" : 1}) ; 
+  Articles.createIndex({"isPublished" : 1, "createdAt" : 1}) ;
+  Comments.createIndex({"userId" : 1}) ; 
+  Articles.createIndex({"userId" : 1}) ; 
+  Avatars.createIndex({"userId" : 1}) ; 
+  Images.createIndex({"articleId" : 1}) ; 
+  Comments.createIndex({"articleId" : 1}) ;
+
+
+// FIXTURES
    console.log("remplissage de la base (fixtures) ") ;
    var now = new Date().getTime();
 
