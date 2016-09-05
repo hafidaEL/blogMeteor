@@ -5,6 +5,7 @@ Projet de fin d'année : Blog réalisé avec Meteor (meteor.com)
 
 cloner ou downloader ce repository.
 ```
+git clone https://github.com/hafidaEL/blogMeteor.git
 cd blogMeteor
 meteor
 ```
@@ -13,6 +14,7 @@ ouvrir le lien : http://localhost:3000
 
 ## pour passer un utilisateur en admin 
 
+créer 1 compte (via login / inscription)
 activer MeteorToys (CTRL+M)
 deplier user et cliquer sur update
 remplacer  "roles": [

@@ -26,6 +26,10 @@ Template.Header.events({
 		FlowRouter.go('commentaires');
 	},
 	'click #boutonLogin' : () => {
+		state = AccountsTemplates.getState();
+		if (state == "signIn"){
+			$("#avatar").hide();
+		}
 		Session.set('modal-toggle','open'); // fait apparaitre la modal Box
 	},
 	'click .boutonLogout' : () => {

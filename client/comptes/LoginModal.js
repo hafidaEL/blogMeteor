@@ -1,13 +1,13 @@
 Template.LoginModal.onCreated(function(){
-
+	console.log("created LoginModal");
 	$("#avatar").hide();
 
 });
 
 Template.LoginModal.onRendered(function(){
 	this.autorun(() => {
-
 		state = AccountsTemplates.getState();
+		console.log("state "+state);
 		if (state == "signIn"){
 			$("#avatar").hide();
 			$("#at-btn").html("CONNEXION");
@@ -19,6 +19,8 @@ Template.LoginModal.onRendered(function(){
 		}
 	});
 });
+
+
 
 Template.LoginModal.events({
 	'click .close-login' : () => {
