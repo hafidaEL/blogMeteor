@@ -23,7 +23,7 @@ kadira:flow-router
 kadira:blaze-layout
 meteortoys:allthings
 session
-materialize:materialize   # materialize
+materialize:materialize@=0.97.6   # materialize (sans le bug )
 fourseven:scss            # utilisé par materialize
 stolinski:stylus-multi    # Pour Stylus scss
 momentjs:moment
@@ -38,3 +38,4 @@ aldeed:template-extension	# Pour personnaliser le template login atForm
 alanning:roles				# Pour creer des users avec un rôle utilisateur et/ou admin
 meteorhacks:kadira
 kadira:debug
+cerealkiller:materialnote	# editeur wysiwyg (summernote sauce materialize) 
