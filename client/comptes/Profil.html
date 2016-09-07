@@ -1,59 +1,61 @@
 <template name="Profil">
-{{#if Template.subscriptionsReady}}
-<div class="row">
-    <form class="col s12">
-      <!-- E-MAIL -->
-	  <div class="row">
-      	<div class="input-field col s6">
-          <i class="material-icons prefix">mail</i>
-          <input id="email" type="email" class="validate" value="{{email}}" disabled>
-          <label for="email" class="active">E-mail</label>
+{{#if currentUser}}
+  {{#if Template.subscriptionsReady}}
+  <div class="row">
+      <form class="col s12">
+        <!-- E-MAIL -->
+  	  <div class="row">
+        	<div class="input-field col s6">
+            <i class="material-icons prefix">mail</i>
+            <input id="email" type="email" class="validate" value="{{email}}" disabled>
+            <label for="email" class="active">E-mail</label>
+          </div>
+          <div>
+          	
+          </div>
         </div>
-        <div>
-        	
-        </div>
-      </div>
 
-      <!-- Nouveau mot de passe -->
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">lock</i>
-          <input id="pwd" type="password" class="validate">
-          <label for="pwd">Mot de passe</label>
+        <!-- Nouveau mot de passe -->
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">lock</i>
+            <input id="pwd" type="password" class="validate">
+            <label for="pwd">Mot de passe</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="new_pwd" type="password" class="validate">
+            <label for="new_pwd">Confirmez mot de passe</label>
+          </div>
         </div>
-        <div class="input-field col s6">
-          <input id="new_pwd" type="password" class="validate">
-          <label for="new_pwd">Confirmez mot de passe</label>
-        </div>
-      </div>
 
-      <!-- Nom et Prénom -->
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="nom" type="text" class="validate" value="{{user.profile.nom}}">
-          <label for="nom" class="active">Nom</label>
+        <!-- Nom et Prénom -->
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="nom" type="text" class="validate" value="{{user.profile.nom}}">
+            <label for="nom" class="active">Nom</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="prenom" type="text" class="validate" value="{{user.profile.prenom}}">
+            <label for="prenom" class="active">Prénom</label>
+          </div>
         </div>
-        <div class="input-field col s6">
-          <input id="prenom" type="text" class="validate" value="{{user.profile.prenom}}">
-          <label for="prenom" class="active">Prénom</label>
-        </div>
-      </div>
 
-      <!-- Avatar -->
-      <div class="row">
-      	<div class="input-field center">
-      		<input id="avatar" type="file" name="avatar" value=""> 
-      		<img id="vignette" class="vignette_size" src="{{ avatar }}">
-      		<input id="avatarId" type="hidden" name="avatarId" value="{{user.profile.avatarId}}">
-      	</div>
-      </div>
-           <button id="sauvegarder" class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder
-       <i class="material-icons right"></i>
-      </button> 
-    </form>
-  </div>
-{{else}}
-  {{> monLoader}}
+        <!-- Avatar -->
+        <div class="row">
+        	<div class="input-field center">
+        		<input id="avatar" type="file" name="avatar" value=""> 
+        		<img id="vignette" class="vignette_size" src="{{ avatar }}">
+        		<input id="avatarId" type="hidden" name="avatarId" value="{{user.profile.avatarId}}">
+        	</div>
+        </div>
+             <button id="sauvegarder" class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder
+         <i class="material-icons right"></i>
+        </button> 
+      </form>
+    </div>
+  {{else}}
+    {{> monLoader}}
+  {{/if}}
 {{/if}}
 </template>

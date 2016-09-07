@@ -1,4 +1,5 @@
 <template name="editArticle">
+{{#if isInRole 'admin'}}
   <div class="row">
     <form class="col s12">
      
@@ -8,10 +9,11 @@
           <label for="title" class="active">Titre</label>
         </div>
       </div>
-       <div class="row">
+       <div class="row"> 
         <div class="input-field col s12">
-          <textarea id="content" class="materialize-textarea">{{article.content}}</textarea>
-          <label for="content" class="active">Article</label>
+          <!-- <textarea id="content" class="materialize-textarea">{{article.content}}</textarea> -->
+           <label for="content" class="active">Article</label> <br> <br>
+            <div id="content">{{{ renvoieContent }}}</div>
         </div>
       </div>
       <button id="sauvegarder" class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder
@@ -19,4 +21,5 @@
   </button>
     </form>
   </div>
+{{/if}}
 </template>

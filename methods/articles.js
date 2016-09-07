@@ -3,7 +3,7 @@ Meteor.methods({
 		//console.log("insertArticle "+title+" "+contenu) ;
 
 		check(title, String);
-		check(contenu, String);
+		// check(contenu, String);
 		check(imageId, String);
         var currentUserId = Meteor.userId();
         if(currentUserId){
@@ -31,7 +31,7 @@ Meteor.methods({
 	updateArticle: function(id,title,contenu){
 		check(id, String);
 		check(title, String);
-		check(contenu, String);
+		// check(contenu, String);
 		var currentUserId = Meteor.userId();
 		if (currentUserId){
 			var art = Articles.findOne(id);
@@ -47,7 +47,7 @@ Meteor.methods({
 	deleteArticle : function(id){
 		check(id, String);
  		var currentUserId = Meteor.userId();
-        if(currentUserId){
+ 		if (Roles.userIsInRole(currentUserId, 'admin')) {
         	var art = Articles.findOne(id);
         	Images.remove(art.imageId);
 			Comments.remove({articleId: id});
