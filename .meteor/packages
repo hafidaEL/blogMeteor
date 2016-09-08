@@ -17,7 +17,7 @@ standard-minifier-js     # JS minifier run for production mode
 es5-shim                 # ECMAScript 5 compatibility for older browsers.
 ecmascript               # Enable ECMAScript2015+ syntax in app code
 
-materialize:materialize@0.97.7
+materialize:materialize
 check
 kadira:flow-router
 kadira:blaze-layout
@@ -35,7 +35,6 @@ raix:handlebar-helpers
 
 aldeed:template-extension	# Pour personnaliser le template login atForm
 alanning:roles				# Pour creer des users avec un rôle utilisateur et/ou admin
-meteorhacks:kadira
-kadira:debug
+
 cerealkiller:materialnote	# editeur wysiwyg (summernote sauce materialize) 
 
