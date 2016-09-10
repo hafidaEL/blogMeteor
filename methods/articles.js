@@ -17,7 +17,8 @@ Meteor.methods({
 				     isPublished: false,
 				     content: contenu,
 				     createdAt: new Date(),
-				     imageId : imageId
+				     imageId : imageId,
+				     nbViews : 0
 	   		});
 	   		//console.log("updating "+imageId+" articleId "+articleId);
 	   		Images.update(imageId, { $set : { articleId : articleId }}) ;
@@ -60,7 +61,14 @@ Meteor.methods({
 		check(id, String);
 		var art = Articles.findOne(id);
 		//console.log("id de l'article : " + id);
-		Articles.update(id, { $set : { isPublished : !art.isPublished }});
+		var currentUserId = Meteor.userId();
+ 		if (Roles.userIsInRole(currentUserId, 'admin')) {
+			Articles.update(id, { $set : { isPublished : !art.isPublished }});
+		}
+	},
+	majViewsArticle : (id) => {
+		check(id, String);
+		Articles.update(id, { $inc : { nbViews : 1 }});
 	}
 
 }) ;

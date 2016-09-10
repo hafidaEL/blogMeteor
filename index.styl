@@ -50,7 +50,7 @@ footer.page-footer
     &.open {
         opacity  1 
         transform  translateX(-50%) scale(1) 
-        z-index  3 
+        z-index  9998 
     }
     h3 {
         margin-top  0 
@@ -80,7 +80,7 @@ footer.page-footer
     display block
 }
 
-.pointeur {
+.pointeur, #home {
     cursor pointer
 }
     
@@ -88,6 +88,10 @@ footer.page-footer
     display: flex
 }
 
-#monDropDown, #mobileMenu {
+.dropdown-content {
     z-index: 9999 
+}
+
+nav ul#boutonLogin li {
+    float: none;
 }

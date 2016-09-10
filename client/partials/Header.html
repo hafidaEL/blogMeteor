@@ -1,7 +1,8 @@
 <template name="Header">
 	<header>
-		<nav>
-		  <div class="nav-wrapper">
+	<div class="navbar-fixed">
+		<nav class="blue">
+		  <div class="nav-wrapper" style="margin-left: 20px; margin-right: 20px;">
 		    <a id="home" class="brand-logo hide-on-med-and-down">ACCUEIL</a>
 		
 		    {{#if currentUser}}
@@ -12,7 +13,7 @@
 			    {{> Dropdown}}
 			{{else}}
 				<ul id="boutonLogin" class="right">	
-			    	<li>Login</li>
+			    	<li class="btn">Login</li>
 			    </ul>
 		    {{/if}}
 			
@@ -22,6 +23,7 @@
 		  </div> 
 
 		</nav>
+	</div>
 	</header>
 	{{> LoginModal}}
 </template>

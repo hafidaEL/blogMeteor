@@ -1,8 +1,11 @@
-
+Template.ArticleItem.onRendered(function(){    
+  console.log(' onRenderedArticleItem ');
+  $('.tooltipped').tooltip({delay: 50});
+});
 
 Template.ArticleItem.helpers({
 	extrait : (content) => {
-		return content.substr(0, 40);
+		return (content.substr(0, 30) + "...");
 	},
 	vignette : (imageId) => {
 		img = Images.findOne({_id : imageId}) ;

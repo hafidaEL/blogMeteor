@@ -76,6 +76,7 @@ Meteor.publish('mesImages', function(){
 	return Images.find({ userId : this.userId });
 });
 
+// services : false  pour empecher les passwords de passer ... 
 Meteor.publish('allUsers', function() {
 	//if (Roles.userIsInRole(this.userId, 'admin')) {
 		return Meteor.users.find({} , {fields: { services : false}});

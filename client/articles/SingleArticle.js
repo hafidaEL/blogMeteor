@@ -8,6 +8,13 @@ Template.SingleArticle.onCreated(function(){
 	});
 });
 
+Template.SingleArticle.onRendered(function() {
+	console.log("onRendered SingleArticle");
+		let id = FlowRouter.getParam('id');
+		Meteor.call('majViewsArticle', id, function(err, result) {
+		});
+});
+
 
 Template.SingleArticle.helpers({
 	article : () => {

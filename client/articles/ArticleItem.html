@@ -6,10 +6,15 @@
           <span class="card-title black-text">{{title}}</span>
         </div>
         <div class="card-content">
-          <p>{{{extrait content}}}...</p>
+          <span>{{{extrait content}}}</span>
         </div>
         <div class="card-action">
-          <a href="/article/{{_id}}">Lire la suite</a>
+          <a href="/article/{{_id}}" class="green-text">Ouvrir</a>
+          <span style="float: right; padding-right: 1rem;">
+          <i id="oeil" class="material-icons light-blue-text tooltipped" data-position="top" data-delay="50" data-tooltip="{{nbViews}} views" style="font-size: 1.3rem; padding-right: 10px;cursor: pointer;">visibility</i>
+          <i class="material-icons pink-text tooltipped action-like" data-position="top" data-delay="50" data-tooltip="{{nbLikes}} likes" style="font-size: 1.3rem; padding-right: 10px; cursor: pointer;">favorite</i>
+          <span style="float: left;"></span>
+          </span>
         </div>
       </div>
     </div>
