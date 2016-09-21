@@ -20,10 +20,6 @@ Meteor.publish('avatars', function(){
 	return Avatars.find();
 });
 
-// Tous les commentaires
-Meteor.publish('comments', function(){
-	return Comments.find();
-});
 
 // un article donné
 Meteor.publish('SingleArticle', function(id){
@@ -38,9 +34,15 @@ Meteor.publish('commentsArticle', function(artId){
 	return Comments.find({articleId: artId});
 });
 
+// Tous les commentaires
+Meteor.publish('comments', function(){
+	return Comments.find();
+});
 
-
-
+// Mes commentaires
+Meteor.publish('myComments', function(){
+	return Comments.find({ userId : this.userId });
+});
 
 // etant donné un id de commentaire, renvoit le commentaire et l'article associé
 Meteor.publish('SingleComment', function(id){
@@ -74,11 +76,6 @@ Meteor.publish('mesImages', function(){
 	return Images.find({ userId : this.userId });
 });
 
-// Mes commentaires
-Meteor.publish('myComments', function(){
-	return Comments.find({ userId : this.userId });
-});
-
 // services : false  pour empecher les passwords de passer ... 
 Meteor.publish('allUsers', function() {
 	//if (Roles.userIsInRole(this.userId, 'admin')) {
@@ -107,6 +104,7 @@ Meteor.publish('myCommentsLiked', function(){
 
 // j'aime postés :
 // Commentaires que j'ai liké ==> commentaires qui ont dans leur liker : moi
+
 Meteor.publish('commentsLikedByMe', function(){
 	comments = Comments.find({ likers : this.userId });
 	//console.log("j aime postés :"+comments.count());
